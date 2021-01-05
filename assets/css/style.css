@@ -1,0 +1,26 @@
+.navbar-brand img{
+    width: 60%;
+}
+.camera-section{}
+.camera-section video{
+    width: 100%;
+}
+.camera-section canvas{
+    width: 100%;
+}
+.camera-btn{}
+.camera-btn button{
+    width: 100%;
+}
+.object-list-container{
+    height: 400px;
+    overflow: scroll;
+}
+.objects-wrapper{
+    border: 1px solid black;
+    padding: 5px 10px;
+}
+.object-name{}
+.object-name h2{}
+.object-details{}
+.object-details p{}

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Object Detection and Recognition -->
+    <title>Animo Apps</title>
+    <!-- Object Detection and Recognition -->
+
+    <!-- Bootstrat v4.5 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="assets/img/logo.png" alt="" loading="lazy">
+            </a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="camera-section">
+                    <video id="video" autoplay></video>
+                    <div class="camera-btn">
+                        <!-- <button class="btn btn-primary">Snap Photo</button> -->
+                        <button class="btn btn-primary" id="snap">Snap Photo</button>
+                    </div>
+                    <canvas id="canvas"></canvas>
+                </div>
+
+            </div>
+            <div class="col-md-6">
+                <div class="object-list-container">
+                    <div class="objects-wrapper">
+                        <div class="object-name">
+                            <h2>Object Name</h2>
+                        </div>
+                        <div class="object-details">
+                            <p>Property</p>
+                            <p>Property</p>
+                            <p>Property</p>
+                        </div>
+                    </div>
+                    <div class="objects-wrapper">
+                        <div class="object-name">
+                            <h2>Object Name</h2>
+                        </div>
+                        <div class="object-details">
+                            <p>Property</p>
+                            <p>Property</p>
+                            <p>Property</p>
+                        </div>
+                    </div>
+                    <div class="objects-wrapper">
+                        <div class="object-name">
+                            <h2>Object Name</h2>
+                        </div>
+                        <div class="object-details">
+                            <p>Property</p>
+                            <p>Property</p>
+                            <p>Property</p>
+                        </div>
+                    </div>
+                    <div class="objects-wrapper">
+                        <div class="object-name">
+                            <h2>Object Name</h2>
+                        </div>
+                        <div class="object-details">
+                            <p>Property</p>
+                            <p>Property</p>
+                            <p>Property</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Bootstrap v4.5 scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+        crossorigin="anonymous"></script>
+
+    <!-- Camera Scripts -->
+    <script>
+        // Grab elements, create settings, etc.
+        var video = document.getElementById('video');
+
+        // Get access to the camera!
+        if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+            // Not adding `{ audio: true }` since we only want video now
+            navigator.mediaDevices.getUserMedia({ video: true }).then(function (stream) {
+                //video.src = window.URL.createObjectURL(stream);
+                video.srcObject = stream;
+                video.play();
+            });
+        }
+
+        /* Legacy code below: getUserMedia
+        else if(navigator.getUserMedia) { // Standard
+            navigator.getUserMedia({ video: true }, function(stream) {
+                video.src = stream;
+                video.play();
+            }, errBack);
+        } else if(navigator.webkitGetUserMedia) { // WebKit-prefixed
+            navigator.webkitGetUserMedia({ video: true }, function(stream){
+                video.src = window.webkitURL.createObjectURL(stream);
+                video.play();
+            }, errBack);
+        } else if(navigator.mozGetUserMedia) { // Mozilla-prefixed
+            navigator.mozGetUserMedia({ video: true }, function(stream){
+                video.srcObject = stream;
+                video.play();
+            }, errBack);
+        }
+        */
+
+        // Elements for taking the snapshot
+        var canvas = document.getElementById('canvas');
+        var context = canvas.getContext('2d');
+        var video = document.getElementById('video');
+
+        // Trigger photo take
+        document.getElementById("snap").addEventListener("click", function () {
+            context.drawImage(video, 0, 0, 640, 480);
+        });
+    </script>
+</body>
+
+</html>
